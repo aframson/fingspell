@@ -14,7 +14,7 @@ function Footer() {
         <div className={styles.section}>
             <h3>Developers</h3>
             <p>
-                <a href="https://richardobiri.live" className={styles.link}>
+                <a href="https://richardobiri.live" target="_blank" className={styles.link}>
                    Richard Obiri
                 </a>
             </p>
@@ -46,11 +46,11 @@ function Footer() {
         </div>
         <div className={styles.section}>
             <h3>Acknowledgement</h3>
-            <p>
+            <p style={{width:200}}>
               Developed under the Supervision of <a  href="https://richardobiri.live" className={styles.link}>Dr. Ellis Eghan</a> 
             </p>
           
-            <p>
+            <p style={{width:200}}>
                 A final year project of the 
                 <a href="https://richardobiri.live" className={styles.link}>
                    University of Cape Coast Ghana 
