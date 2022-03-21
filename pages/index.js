@@ -15,11 +15,11 @@ export default function Home() {
 
         <main className={styles.main}>
           <h1 className={styles.title}>
-            <a href="https://nextjs.org">FingSpell</a> Demo v1.0.0
+            <a href="https://nextjs.org">FingSpell</a>
           </h1>
 
           <p className={styles.description}>
-            Official Word Document for Text to signlaguage translation
+            Official  Text to Sign-laguage Translation app
           </p>
 
           <div className={styles.grid}>

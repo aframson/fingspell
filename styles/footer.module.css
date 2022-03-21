@@ -2,7 +2,7 @@
     background:#f7f7f7;
     padding:50px;
     display:grid;
-    grid-template-columns:0.2fr 0.2fr 0.2fr 0.2fr;
+    grid-template-columns:0.2fr 0.2fr 0.2fr 0.2fr 0.1fr;
 }
 .link{
     text-decoration:none;

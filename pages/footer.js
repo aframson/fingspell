@@ -58,6 +58,13 @@ function Footer() {
             </p>
           
         </div>
+        <div className={styles.section}>
+            <h3>Version</h3>
+            <p>
+             v1.0.0
+            </p>
+          
+        </div>
     </div>
   )
 }
