@@ -16,7 +16,37 @@ function Functions() {
                 </div>
                 <div className={styles.textbox}>
                     <h3>
-                        Voice Recognition
+                        Speech to Sign Langaue Recognition
+                    </h3>
+                    <p>
+                        Fingspell&reg; uses voice regognition to recognize
+                        your voice and converts it to sign language
+                    </p>
+                </div>
+            </div>
+
+            <div className={styles.item}>
+                <div className={styles.imgbox}>
+                    <BiUserVoice size={100} color={'#0070f3'} />
+                </div>
+                <div className={styles.textbox}>
+                    <h3>
+                        Speech to Sign Langaue Recognition
+                    </h3>
+                    <p>
+                        Fingspell&reg; uses voice regognition to recognize
+                        your voice and converts it to sign language
+                    </p>
+                </div>
+            </div>
+
+            <div className={styles.item}>
+                <div className={styles.imgbox}>
+                    <BiUserVoice size={100} color={'#0070f3'} />
+                </div>
+                <div className={styles.textbox}>
+                    <h3>
+                        Speech to Sign Langaue Recognition
                     </h3>
                     <p>
                         Fingspell&reg; uses voice regognition to recognize

@@ -77,32 +77,20 @@ function App() {
     } = useSpeechRecognition();
 
 
+    
     const PutWordInArray = (text) => {
-        let array = text.split(' ')
+        const patternToMatch =  /[^a-zA-Z]/g; // regular expression to exclude "'" and "," from the text" 
+        let array = text.split(patternToMatch) 
         setTextArray(array)
         console.log(array)
     }
 
-    const extractPDF = () => {
-        pdfExtract.extract('../his.pdf', options, (err, data) => {
-            if (err) return console.log(err);
-            console.log(data);
-        });
-    }
 
     // put text in an array on spacebar press
     const onKeyPress = (text) => {
         setText(text)
         PutWordInArray(text)
     }
-
-    // set words to mapped alphabets
-    const mapAlphabets = (text) => {
-        let mapped = text.split('').map(letter => {
-            return alphabets[letter]
-        })
-    }
-
     useEffect(() => {
         onKeyPress(text)
     }, [])
@@ -110,6 +98,7 @@ function App() {
     useEffect(() => {
         setText(transcript)
         PutWordInArray(transcript)
+        console.log(transcript)
     }, [transcript])
 
     if (!browserSupportsSpeechRecognition) {

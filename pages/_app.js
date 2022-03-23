@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 import '../styles/globals.css'
 import { AppState } from '../States/State'
 import React,{useState,useEffect} from 'react'

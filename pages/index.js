@@ -74,7 +74,7 @@ export default function Home() {
         </Parallax>
       
         <center>
-          <div className={styles.textbox}>
+          <div style={{fontSize:50,paddingTop:100}} className={styles.textbox}>
             Functions
           </div>
         </center>
