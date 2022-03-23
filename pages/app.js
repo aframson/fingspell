@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Image from 'next/image'
 import styles from '../styles/App.module.css'
-import { BiImport } from "react-icons/bi";
 import aImg from '../datasets/hand1_a_bot_seg_1_cropped.jpeg'
 import bImg from '../datasets/hand1_b_bot_seg_1_cropped.jpeg'
 import cImg from '../datasets/hand1_c_bot_seg_1_cropped.jpeg'
@@ -60,11 +60,22 @@ const alphabets = {
     z: zImg,
     ' ': 'https://i.ibb.co/0jZxXxq/space.png'
 }
+
 function App() {
+
+
 
     const [text, setText] = useState('Hi there lets begin')
     const [mappedResults, setMappedResults] = useState([])
     const [textArray, setTextArray] = useState([])
+
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
+
 
     const PutWordInArray = (text) => {
         let array = text.split(' ')
@@ -96,6 +107,16 @@ function App() {
         onKeyPress(text)
     }, [])
 
+    useEffect(() => {
+        setText(transcript)
+        PutWordInArray(transcript)
+    }, [transcript])
+
+    if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+    }
+
+
     return (
         <Convert>
             <div className={styles.container}>
@@ -113,8 +134,20 @@ function App() {
                                 Save
                                 &darr;
                             </button>
+                            <button className={styles.savebutt}>
+                                Voice
+                                &darr;
+                            </button>
+                            <div>
+                                <p>Microphone: {listening ? 'on' : 'off'}</p>
+                                <button onClick={SpeechRecognition.startListening}>Start</button>
+                                <button onClick={SpeechRecognition.stopListening}>Stop</button>
+                                <button onClick={resetTranscript}>Reset</button>
+                                <p>{transcript}</p>
+                            </div>
                         </div>
                         <div className={styles.imp}>
+
                             <p>
                                 you can convert files such us text , pdf , and word files into sign language by using the import button
                             </p>
@@ -129,7 +162,7 @@ function App() {
                         {textArray.map((word, index) => (
                             <span key={index} className={styles.eachwords}>
                                 {word.split('').map((letter, index) => (
-                                    <Image key={index} width={50} height={50} src={alphabets[letter.toLowerCase()]} alt={letter} placeholder={'blur'} blurDataURL={alphabets[letter]} />
+                                    <Image key={index} width={50} height={50} src={alphabets && alphabets[letter.toLowerCase()]} alt={letter} placeholder={'blur'} blurDataURL={alphabets && alphabets[letter]} />
                                 ))}
                             </span>
                         ))}

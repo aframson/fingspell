@@ -1,0 +1,21 @@
+.container{
+    /* border: 1px solid; */
+    padding:50px;
+}
+.items{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* border: 1px solid; */
+  gap: 20px;
+}
+.item{
+    /* border: 1px solid; */
+    padding:30px;
+    text-align: center;
+}
+.imgbox{
+    align-self: center;
+    margin: auto;
+    /* border: 1px solid; */
+    width: max-content;
+}
