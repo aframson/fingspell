@@ -47,7 +47,7 @@ function Footer() {
             <div className={styles.section}>
                 <h3>Acknowledgement</h3>
                 <p style={{ width: 200 }}>
-                    Developed under the Supervision of <a href="https://richardobiri.live" className={styles.link}>Dr. Ellis Eghan</a>
+                    Developed under the Supervision of <a href="https://richardobiri.live" rel="noreferrer" className={styles.link}>Dr. Ellis Eghan</a>
                 </p>
 
                 <p style={{ width: 200 }}>
