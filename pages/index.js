@@ -122,9 +122,6 @@ export default function Home() {
           </div>
         </Parallax>
 
-
-
-
       </div>
 
     </Convert>
