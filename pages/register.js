@@ -101,11 +101,11 @@ function Register() {
                     <>
                         {auth.currentUser ? (
                             <div className={styles.imgboxu}>
-                                <Image layout='responsive' width={50} height={50} src={userData && userData.photoURL} placeholder="blur" blurDataURL={userData && userData.photoURL} />
+                                <Image alt="img" layout='responsive' width={50} height={50} src={userData && userData.photoURL} placeholder="blur" blurDataURL={userData && userData.photoURL} />
                             </div>
                         ) : (
                             <div className={styles.imgbox}>
-                                <Image layout='responsive' width={50} height={50} src={fin} placeholder="blur" />
+                                <Image alt="img" layout='responsive' width={50} height={50} src={fin} placeholder="blur" />
                             </div>
                         )}
                         <div className={styles.textbox}>

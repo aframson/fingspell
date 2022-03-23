@@ -34,13 +34,13 @@ function Footer() {
                 <h3>Download Mobile App</h3>
                 <p>
                     <div style={{ height: 50, width: 120, cursor: 'pointer' }}>
-                        <Image layout='responsive' src={apps} placeholder="blur" />
+                        <Image layout='responsive' src={apps} alt="img" placeholder="blur" />
                     </div>
                 </p>
 
                 <p>
                     <div style={{ height: 50, width: 120, marginTop: 10, cursor: 'pointer' }}>
-                        <Image layout='responsive' src={play} placeholder="blur" />
+                        <Image layout='responsive' src={play} alt="img" placeholder="blur" />
                     </div>
                 </p>
             </div>
