@@ -159,13 +159,7 @@ function App() {
                                     <span style={{padding:5}}>Voice</span>
                                     <FaMicrophone size={10} color={'white'} />
                                 </button>
-                                <div>
-                                    <p>Microphone: {listening ? 'on' : 'off'}</p>
-                                    <button onClick={SpeechRecognition.startListening}>Start</button>
-                                    <button onClick={SpeechRecognition.stopListening}>Stop</button>
-                                    <button onClick={resetTranscript}>Reset</button>
-                                    <p>{transcript}</p>
-                                </div>
+                              
                             </div>
                             <div className={styles.imp}>
 
