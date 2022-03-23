@@ -1,40 +1,42 @@
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Convert from './convert'
-import fin from '../assets/fin.png'
 import fin2 from '../assets/fin2.png'
-import deaf1 from '../assets/deaf.jpg'
 import apps from '../assets/app.jpeg'
 import play from '../assets/goo.png'
 import { Parallax } from 'react-parallax'
 import Functions from '../components/Functions'
+import { AppState } from '../States/State';
+
 export default function Home() {
+
+  const { config } = useContext(AppState)
+
   return (
     <Convert>
       <div className={styles.container}>
 
         <div className={styles.title}>
           <center>
-          <div className={styles.imgbox}>
-            <Image layout='responsive' src={fin2} placeholder="blur" />
-          </div>
+            <div className={styles.imgbox}>
+              <Image layout='responsive' src={fin2} placeholder="blur" />
+            </div>
           </center>
           <div className={styles.textbox}>
-            Fingspell&reg;
+            {config.name}&reg;
           </div>
         </div>
         <div className={styles.textbox2}>
           <p>
-            The official Text to sign langaue Application
+            {config.subTitle}
           </p>
           <p className={styles.textboxsub}>
-            Fingspell&reg; is a free and open source application that converts text into sign language.
-            is uses the ASL (American Sign Language) alphabet to convert text into sign language.
-            this standard is what the GSL (Ghanian Sign Language) is based on.
+            {config.description}
           </p>
           <p style={{ fontSize: 14 }}>
-            v1.0.0
+            {config.version}
           </p>
 
           <div className={styles.title2}>
@@ -46,7 +48,7 @@ export default function Home() {
             </div>
           </div>
           <Link href='/register'>
-          <button className={styles.start}>Get Started &rarr;</button>
+            <button className={styles.start}>Get Started &rarr;</button>
           </Link>
         </div>
 
@@ -72,13 +74,13 @@ export default function Home() {
 
           </div>
         </Parallax>
-      
+
         <center>
-          <div style={{fontSize:50,paddingTop:100}} className={styles.textbox}>
+          <div style={{ fontSize: 50, paddingTop: 100 }} className={styles.textbox}>
             Functions
           </div>
         </center>
-        <Functions/>
+        <Functions />
 
         <Parallax
           bgImage={'https://extended.unco.edu/images/programs/asl-interpreting/asl-english-interpretation-ba-main-banner.jpg'}
@@ -87,12 +89,12 @@ export default function Home() {
           style={{ width: '100%', height: '70vh' }}
         >
           <div className={styles.regbox}>
-            <h2 style={{color:'#0070f3'}}>
+            <h2 style={{ color: '#0070f3' }}>
               Register to Get Started
             </h2>
             Help with your creative ideas ideas to create a better world by contributing ideas or reasearch.
             to build up systems to support the development of the sign language.
-            <div style={{backgroundColor:'#0070f3'}} className={styles.regsub}>
+            <div style={{ backgroundColor: '#0070f3' }} className={styles.regsub}>
               <Link href='/register'>
                 <a className={styles.register}>Get Started &rarr;</a>
               </Link>
@@ -100,11 +102,12 @@ export default function Home() {
 
           </div>
         </Parallax>
-      
+
 
 
 
       </div>
+
     </Convert>
   )
 }

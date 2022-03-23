@@ -22,6 +22,7 @@
   width: max-content;
   padding-top:50px;
 }
+
 .title2{
   /* border: 1px solid; */
   display:grid;
@@ -42,6 +43,7 @@
   border-radius: 5px;
   font-size: 100px;
 }
+
 .textbox2{
   margin: 0;
   /* padding: 10px; */
