@@ -75,9 +75,9 @@ export default function Home() {
 
         <Parallax
           bgImage={'https://400languages.com/wp-content/uploads/2019/06/american-sign-language-asl-interpreting-AFLS-400languages-pexels.jpeg'}
-          strength={-500}
-          blur={{ min: -2, max: 3 }}
-          style={{ width: '100%', height: '90vh' }}
+          strength={600}
+          blur={{ min: -1, max: 3 }}
+          style={{ width: '100%', height: '80vh' }}
         >
           <div className={styles.regbox}>
             <h2>
@@ -103,8 +103,8 @@ export default function Home() {
 
         <Parallax
           bgImage={'https://extended.unco.edu/images/programs/asl-interpreting/asl-english-interpretation-ba-main-banner.jpg'}
-          strength={-500}
-          blur={{ min: -2, max: 3 }}
+          strength={600}
+          blur={{ min: -1, max: 3 }}
           style={{ width: '100%', height: '90vh' }}
         >
           <div className={styles.regbox}>
