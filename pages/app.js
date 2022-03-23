@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Image from 'next/image'
 import styles from '../styles/App.module.css'
@@ -28,7 +28,9 @@ import wImg from '../datasets/hand1_w_bot_seg_1_cropped.jpeg'
 import xImg from '../datasets/hand1_x_bot_seg_1_cropped.jpeg'
 import yImg from '../datasets/hand1_y_bot_seg_1_cropped.jpeg'
 import zImg from '../datasets/hand1_z_bot_seg_1_cropped.jpeg'
+import db from '../firebase/app'
 import Convert from './convert';
+import Link from 'next/link';
 
 // alphabets and coresponding ASL alphabets images
 const alphabets = {
@@ -60,11 +62,17 @@ const alphabets = {
     z: zImg,
     ' ': 'https://i.ibb.co/0jZxXxq/space.png'
 }
+import { AppState } from '../States/State';
+import { getAuth } from "firebase/auth";
+import { BiReset } from "react-icons/bi";
+import { FaStop, FaMicrophone } from "react-icons/fa";
+
+const auth = getAuth();
 
 function App() {
 
 
-
+    const { userData } = useContext(AppState)
     const [text, setText] = useState('Hi there lets begin')
     const [mappedResults, setMappedResults] = useState([])
     const [textArray, setTextArray] = useState([])
@@ -77,10 +85,10 @@ function App() {
     } = useSpeechRecognition();
 
 
-    
+
     const PutWordInArray = (text) => {
-        const patternToMatch =  /[^a-zA-Z]/g; // regular expression to exclude "'" and "," from the text" 
-        let array = text.split(patternToMatch) 
+        const patternToMatch = /[^a-zA-Z]/g; // regular expression to exclude "'" and "," from the text" 
+        let array = text.split(patternToMatch)
         setTextArray(array)
         console.log(array)
     }
@@ -101,66 +109,112 @@ function App() {
         console.log(transcript)
     }, [transcript])
 
+
     if (!browserSupportsSpeechRecognition) {
-        return <span>Browser doesnt support speech recognition.</span>;
-    }
-
-
-    return (
-        <Convert>
-            <div className={styles.container}>
-                <div className={styles.nav}>
-                    <div className={styles.con}>
-                        <textarea className={styles.input} onChange={(e) => onKeyPress(e.target.value)} placeholder="Type here..." value={text} />
+        return (
+            <Convert>
+                <h1>Browser not surported </h1>
+            </Convert>
+        )
+    } else if (!auth.currentUser) {
+        return (
+            <Convert>
+                <h1>Unauthorized Page </h1>
+            </Convert>
+        )
+    } else {
+        return (
+            <Convert>
+                {auth.currentUser && userData ? (
+                    <div className={styles.userBox}>
+                        <Link href={'/register'}>
+                            <div className={styles.userBox_img_arr}>
+                                &larr;
+                            </div>
+                        </Link>
+                        <div className={styles.userBox_img}>
+                            <Image src={!!userData && userData.photoURL} layout={'responsive'} width={100} height={100} placeholder="blur" blurDataURL={!!userData && userData.photoURL} />
+                        </div>
+                        <div className={styles.userBox_name}>
+                            {userData && userData.displayName}
+                        </div>
                     </div>
-                    <div className={styles.pane}>
-                        <div className={styles.pane_con}>
-                            <button className={styles.importbutt}>
-                                Import
-                                &darr;
-                            </button>
-                            <button className={styles.savebutt}>
-                                Save
-                                &darr;
-                            </button>
-                            <button className={styles.savebutt}>
-                                Voice
-                                &darr;
-                            </button>
-                            <div>
-                                <p>Microphone: {listening ? 'on' : 'off'}</p>
-                                <button onClick={SpeechRecognition.startListening}>Start</button>
-                                <button onClick={SpeechRecognition.stopListening}>Stop</button>
-                                <button onClick={resetTranscript}>Reset</button>
-                                <p>{transcript}</p>
+                ) : null}
+                <div className={styles.container}>
+                    <div className={styles.nav}>
+                        <div className={styles.con}>
+                            <textarea className={styles.input} onChange={(e) => onKeyPress(e.target.value)} placeholder="Type here..." value={text} />
+                        </div>
+                        <div className={styles.pane}>
+                            <div className={styles.pane_con}>
+                                <button className={styles.importbutt}>
+                                    Import
+                                    &darr;
+                                </button>
+                                <button className={styles.savebutt}>
+                                    Save
+                                    &darr;
+                                </button>
+                                <button  onClick={SpeechRecognition.startListening} className={styles.rec}>
+                                    <span style={{padding:5}}>Voice</span>
+                                    <FaMicrophone size={10} color={'white'} />
+                                </button>
+                                <div>
+                                    <p>Microphone: {listening ? 'on' : 'off'}</p>
+                                    <button onClick={SpeechRecognition.startListening}>Start</button>
+                                    <button onClick={SpeechRecognition.stopListening}>Stop</button>
+                                    <button onClick={resetTranscript}>Reset</button>
+                                    <p>{transcript}</p>
+                                </div>
+                            </div>
+                            <div className={styles.imp}>
+
+                                <p>
+                                    you can convert files such us text , pdf , and word files into sign language by using the import button
+                                </p>
+                                <p>
+                                    you can save your converted files by using the save button
+                                </p>
                             </div>
                         </div>
-                        <div className={styles.imp}>
-
-                            <p>
-                                you can convert files such us text , pdf , and word files into sign language by using the import button
-                            </p>
-                            <p>
-                                you can save your converted files by using the save button
-                            </p>
+                    </div>
+                    <div className={styles.textbox}>
+                        <div className={styles.tb}>
+                            {textArray.map((word, index) => (
+                                <span key={index} className={styles.eachwords}>
+                                    {word.split('').map((letter, index) => (
+                                        <Image key={index} width={50} height={50} src={alphabets && alphabets[letter.toLowerCase()]} alt={letter} placeholder={'blur'} blurDataURL={alphabets && alphabets[letter]} />
+                                    ))}
+                                </span>
+                            ))}
                         </div>
                     </div>
-                </div>
-                <div className={styles.textbox}>
-                    <div className={styles.tb}>
-                        {textArray.map((word, index) => (
-                            <span key={index} className={styles.eachwords}>
-                                {word.split('').map((letter, index) => (
-                                    <Image key={index} width={50} height={50} src={alphabets && alphabets[letter.toLowerCase()]} alt={letter} placeholder={'blur'} blurDataURL={alphabets && alphabets[letter]} />
-                                ))}
-                            </span>
-                        ))}
-                    </div>
-                </div>
 
+                </div>
+                {listening ? 
+                <div className={styles.record}>
+               
+                <div onClick={SpeechRecognition.stopListening} className={styles.record_con}>
+                    <center>
+                        <FaStop size={25} color={'white'} />
+                    </center>
+                </div>
+                <div className={styles.record_con}>
+                    <center>
+                        <FaMicrophone size={25} color={'white'} />
+                    </center>
+                </div>
+                <div onClick={resetTranscript} className={styles.record_con}>
+                    <center>
+                        <BiReset size={25} color={'white'} />
+                    </center>
+                </div>
             </div>
-        </Convert>
-    )
+                : null}
+                
+            </Convert>
+        )
+    }
 }
 
 export default App

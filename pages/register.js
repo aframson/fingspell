@@ -91,6 +91,21 @@ function Register() {
 
     return (
         <div className={styles.container}>
+            {auth.currentUser && userData ? (
+                <div className={styles.userBox}>
+                    <Link href={'/'}>
+                        <div className={styles.userBox_img_arr}>
+                            &larr;
+                        </div>
+                    </Link>
+                    <div className={styles.userBox_img}>
+                        <Image src={!!userData && userData.photoURL} layout={'responsive'} width={100} height={100} placeholder="blur" blurDataURL={!!userData && userData.photoURL} />
+                    </div>
+                    <div className={styles.userBox_name}>
+                        {userData && userData.displayName}
+                    </div>
+                </div>
+            ) : null}
             <div className={styles.regcont}>
 
                 {loading ? (
@@ -101,7 +116,7 @@ function Register() {
                     <>
                         {auth.currentUser ? (
                             <div className={styles.imgboxu}>
-                                <Image alt="img" layout='responsive' width={50} height={50} src={userData && userData.photoURL} placeholder="blur" blurDataURL={userData && userData.photoURL} />
+                                <Image alt="img" layout='responsive' width={50} height={50} src={!!userData && userData.photoURL} placeholder="blur" blurDataURL={!!userData && userData.photoURL} />
                             </div>
                         ) : (
                             <div className={styles.imgbox}>
@@ -132,8 +147,8 @@ function Register() {
                                         Continue &rarr;
                                     </button>
                                 </Link>
-                                <button onClick={() => signOut()} style={{ backgroundColor: '#f1f1f1',color:'black' }} className={styles.butt}>
-                                &larr; Sign out 
+                                <button onClick={() => signOut()} style={{ backgroundColor: '#f1f1f1', color: 'black' }} className={styles.butt}>
+                                    &larr; Sign out
                                 </button>
                             </>
                         ) : (

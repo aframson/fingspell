@@ -1,6 +1,9 @@
 .container {
     background: #f7f7f7;
-    padding-top: 50px;
+    padding-top:0px;
+    height: 100vh;
+    position:absolute;
+    width: 100%;
 }
 
 .regcont {
@@ -60,4 +63,37 @@
 }
 .butt:hover{
     background: #0050a3;
+}
+.userBox{
+    display: grid;
+    /* border: 1px solid; */
+    grid-template-columns: 0fr 0fr 1fr;
+    padding: 10px;
+    position:fixed;
+    background: #ffffff;
+    box-shadow: 0.001rem 0.001rem 12px #cccccc;
+    z-index: 100;
+
+}
+.userBox_img{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    align-self: center;
+    margin-left: 5px;
+}
+.userBox_img_arr{
+   font-weight: bold;
+   font-size:25px;
+   padding:10px;
+   cursor: pointer;
+}
+.userBox_img_arr:hover{
+    background-color: #000000;
+    color: white;
+}
+.userBox_name{
+   margin: 15px;
 }

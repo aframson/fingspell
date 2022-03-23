@@ -9,14 +9,33 @@ import play from '../assets/goo.png'
 import { Parallax } from 'react-parallax'
 import Functions from '../components/Functions'
 import { AppState } from '../States/State';
+import db from '../firebase/app'
+import { getAuth } from "firebase/auth";
+const auth = getAuth();
 
 export default function Home() {
 
-  const { config } = useContext(AppState)
+  const { config, userData } = useContext(AppState)
 
   return (
     <Convert>
       <div className={styles.container}>
+        {auth.currentUser && userData ? (
+          <div className={styles.userBox}>
+            <Link href={'/register'}>
+              <div className={styles.userBox_img_arr}>
+                &rarr;
+              </div>
+            </Link>
+            <div className={styles.userBox_img}>
+              <Image src={!!userData && userData.photoURL} layout={'responsive'} width={100} height={100} placeholder="blur" blurDataURL={!!userData && userData.photoURL} />
+            </div>
+            <div className={styles.userBox_name}>
+              {userData && userData.displayName}
+            </div>
+
+          </div>
+        ) : null}
 
         <div className={styles.title}>
           <center>

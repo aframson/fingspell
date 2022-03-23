@@ -58,7 +58,7 @@
     margin-top:10px;
     padding:10px;
     border-radius: 50px;
-    background: #0070f3;
+    background: #000000;
     color:white;
     font-size: 13px;
     cursor: pointer;
@@ -87,10 +87,24 @@
     margin: 10px;
 
 }
-.pane{
-    /* border: 1px solid ; */
-    /* padding: 10px; */
+.rec{
+    margin-top:10px;
+    padding:10px;
+    border-radius: 50px;
+    background: #0070f3;
+    color:white;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    width:120px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+
 }
+
 .pane_con{
     padding: 10px;
     margin: 10px;
@@ -107,4 +121,58 @@
     width: 300px;
     align-self: center;
     margin: auto;
+}
+.userBox{
+    display: grid;
+    /* border: 1px solid; */
+    grid-template-columns: 0fr 0fr 1fr;
+    padding: 10px;
+    position:fixed;
+    background: #ffffff;
+    box-shadow: 0.001rem 0.001rem 12px #cccccc;
+    z-index: 100;
+}
+.userBox_img{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+    align-self: center;
+    margin-left: 5px;
+}
+.userBox_img_arr{
+   font-weight: bold;
+   font-size:25px;
+   padding:10px;
+   cursor: pointer;
+}
+.userBox_img_arr:hover{
+    background-color: #000000;
+    color: white;
+}
+.userBox_name{
+   margin: 15px;
+}
+.record{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 68, 68);
+    box-shadow: 0.001rem 0.001rem 5px #3a3a3a;
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 0.1fr 0.1fr 0.1fr;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
+}
+.record_con{
+    padding:10px;
+}
+.record_con:hover{
+    background-color: rgb(182, 45, 45);
+    cursor: pointer;
 }
