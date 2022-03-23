@@ -113,7 +113,7 @@ function App() {
     }, [transcript])
 
     if (!browserSupportsSpeechRecognition) {
-        return <span>Browser doesn't support speech recognition.</span>;
+        return <span>Browser doesnt support speech recognition.</span>;
     }
 
 
