@@ -14,7 +14,7 @@ function Footer() {
             <div className={styles.section}>
                 <h3>Developers</h3>
                 <p>
-                    <a href="https://richardobiri.live" target="_blank" className={styles.link}>
+                    <a href="https://richardobiri.live" rel="noreferrer" target="_blank" className={styles.link}>
                         Richard Obiri
                     </a>
                 </p>
