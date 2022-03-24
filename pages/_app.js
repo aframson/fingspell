@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       description:`
       Fingspell® is a free and open source application that 
       converts text into sign language , voice to signlanguage and sign language to text. 
-      Is uses the ASL (American Sign Language) 
+      It uses the ASL (American Sign Language) 
       alphabet to convert text into sign language.This standard 
       is what the GSL (Ghanaian Sign Language) is based on.`,
       subTitle:'The official Sign langaue Application'
