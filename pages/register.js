@@ -18,7 +18,6 @@ function Register() {
 
     const { userData, setUserData } = useContext(AppState)
 
-    const [isReg, setIsReg] = useState(false)
     const [loading, setLoading] = useState(false)
 
 
