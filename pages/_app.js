@@ -14,10 +14,11 @@ function MyApp({ Component, pageProps }) {
       name:'Fingspell',
       description:`
       Fingspell® is a free and open source application that 
-      converts text into sign language. is uses the ASL (American Sign Language) 
-      alphabet to convert text into sign language. this standard 
-      is what the GSL (Ghanian Sign Language) is based on.`,
-      subTitle:'The official Voice and Text to sign langaue Application'
+      converts text into sign language , voice to signlanguage and sign language to text. 
+      Is uses the ASL (American Sign Language) 
+      alphabet to convert text into sign language.This standard 
+      is what the GSL (Ghanain Sign Language) is based on.`,
+      subTitle:'The official Sign langaue Application'
    }
 
    const [userData,setUserData] = useState({})
