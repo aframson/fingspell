@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 
    const Config = {
       version:'v1.0.0 Beta',
-      userCount:10,
+      userCount:13,
       name:'Fingspell',
       description:`
       Fingspell® is a free and open source application that 
