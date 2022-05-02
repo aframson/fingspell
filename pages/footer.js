@@ -33,13 +33,13 @@ function Footer() {
                         </a>
                     </p>
                     <p>
-                        <a href="tel:" className={styles.link}>
+                        <a href="https://roodev19.web.app" className={styles.link}>
                             Randy Odoom
                         </a>
                     </p>
                     <p>
-                        <a href="tel:" className={styles.link}>
-                            Gloria Araba
+                        <a href="tel:+233547171211" className={styles.link}>
+                            Gloria Amoh
                         </a>
                     </p>
 
@@ -61,7 +61,7 @@ function Footer() {
                 <div className={styles.section}>
                     <h3>Acknowledgement</h3>
                     <p style={{ width: 200 }}>
-                        Developed under the Supervision of <a href="https://richardobiri.live" rel="noreferrer" className={styles.link}>Dr. Ellis Eghan</a>
+                        Developed under the Supervision of <a href="#" rel="noreferrer" className={styles.link}>Dr. Ellis Eghan</a>
                     </p>
 
                     <p style={{ width: 200 }}>
