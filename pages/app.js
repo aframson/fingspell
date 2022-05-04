@@ -133,7 +133,7 @@ function App() {
                             </div>
                         </Link>
                         <div className={styles.userBox_img}>
-                            <Image src={!!userData && userData.photoURL} layout={'responsive'} width={100} height={100} placeholder="blur" blurDataURL={!!userData && userData.photoURL} />
+                            <Image src={!!userData && userData.photoURL} layout={'responsive'} width={100} height={100} placeholder="blur" blurDataURL={!!userData && userData.photoURL} alt=""/>
                         </div>
                         <div className={styles.userBox_name}>
                             {userData && userData.displayName}
